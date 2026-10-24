@@ -17,11 +17,11 @@ An intelligent automation product for the Orbyte ecosystem that converts WhatsAp
 
 | Resource | Link |
 | --- | --- |
-| GitHub Repository | https://github.com/your-username/your-project |
+| GitHub Repository | [https://github.com/xian3512/SDC2026---Catalyst/tree/main] |
 | Replit Project | https://replit.com/@your-username/your-project |
 | Live Demo | https://your-project.replit.app |
-| RunPod Endpoint | https://api.runpod.ai/v2/your-endpoint-id |
-| Slide Deck | https://example.com/slides |
+| RunPod Endpoint | [https://console.runpod.io/serverless/user/endpoint/6tzygt6b8mtjgt] |
+| Slide Deck | [https://docs.google.com/presentation/d/1uPIV80W6lJlcyAd56q7wniDFDWvIp7h5Lio-QUHiZ1Q/edit?usp=sharing] |
 | Demo Video | https://example.com/demo-video |
 
 ## Overview
