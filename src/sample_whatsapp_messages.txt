@@ -1,0 +1,21 @@
+ORBYTE DEMO WHATSAPP MESSAGES (SYNTHETIC DATA)
+
+01 - Manglish combo (expected products subtotal RM124.00)
+Hi sis, nak order 2 black shirt size M, 1 beige cargo pants size M and 1 black cap. Postage to JB ya.
+
+02 - English combo (expected products subtotal RM100.00)
+Hi! I want 1 white shirt size L and 2 black shorts size M. Delivery to KL, thanks!
+
+03 - Malay and English (expected products subtotal RM90.00)
+Sis saya nak 1 grey hoodie size M dan 1 beige tote bag. Pos ke Penang ye.
+
+04 - Quantity unspecified (draft subtotal RM69.00; warning and owner review)
+Hi, nak order black hoodie size L. Berapa postage?
+
+05 - Unknown item (subtotal RM19.00 for matched cap; unknown sneakers flagged)
+Hi sis, nak order 2 red sneakers size 42 and 1 black cap.
+
+06 - Mixed order (expected products subtotal RM122.00)
+Hello, saya nak 1 blue jeans size L, 1 beige shirt size M and 1 white cap. Shipping Johor.
+
+Note: These are invented messages only. All prices are from the synthetic catalogue.

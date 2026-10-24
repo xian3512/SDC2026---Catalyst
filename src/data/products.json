@@ -1,0 +1,22 @@
+[
+  {"sku": "SHIRT-BLK-M", "product_name": "Black Shirt", "size": "M", "unit_price": "25.00"},
+  {"sku": "SHIRT-WHT-L", "product_name": "White Shirt", "size": "L", "unit_price": "30.00"},
+  {"sku": "SHIRT-BLK-L", "product_name": "Black Shirt", "size": "L", "unit_price": "25.00"},
+  {"sku": "SHIRT-WHT-M", "product_name": "White Shirt", "size": "M", "unit_price": "30.00"},
+  {"sku": "SHIRT-BGE-M", "product_name": "Beige Shirt", "size": "M", "unit_price": "28.00"},
+  {"sku": "SHIRT-BGE-L", "product_name": "Beige Shirt", "size": "L", "unit_price": "28.00"},
+  {"sku": "SHIRT-BLU-M", "product_name": "Blue Shirt", "size": "M", "unit_price": "32.00"},
+  {"sku": "SHIRT-GRY-XL", "product_name": "Grey Shirt", "size": "XL", "unit_price": "32.00"},
+  {"sku": "HOODIE-BLK-M", "product_name": "Black Hoodie", "size": "M", "unit_price": "69.00"},
+  {"sku": "HOODIE-BLK-L", "product_name": "Black Hoodie", "size": "L", "unit_price": "69.00"},
+  {"sku": "HOODIE-GRY-M", "product_name": "Grey Hoodie", "size": "M", "unit_price": "65.00"},
+  {"sku": "PANTS-BLK-M", "product_name": "Black Cargo Pants", "size": "M", "unit_price": "59.00"},
+  {"sku": "PANTS-BLK-L", "product_name": "Black Cargo Pants", "size": "L", "unit_price": "59.00"},
+  {"sku": "PANTS-BGE-M", "product_name": "Beige Cargo Pants", "size": "M", "unit_price": "55.00"},
+  {"sku": "JEANS-BLU-L", "product_name": "Blue Jeans", "size": "L", "unit_price": "75.00"},
+  {"sku": "SHORTS-BLK-M", "product_name": "Black Shorts", "size": "M", "unit_price": "35.00"},
+  {"sku": "SHORTS-GRY-L", "product_name": "Grey Shorts", "size": "L", "unit_price": "35.00"},
+  {"sku": "CAP-BLK-OS", "product_name": "Black Cap", "size": "One Size", "unit_price": "19.00"},
+  {"sku": "CAP-WHT-OS", "product_name": "White Cap", "size": "One Size", "unit_price": "19.00"},
+  {"sku": "BAG-BGE-OS", "product_name": "Beige Tote Bag", "size": "One Size", "unit_price": "25.00"}
+]

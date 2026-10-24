@@ -1,0 +1,31 @@
+
+[
+  {
+    "order_id": "ORD001",
+    "customer_name": "Alice",
+    "amount_due": 80.00,
+    "currency": "MYR",
+    "payment_status": "UNPAID"
+  },
+  {
+    "order_id": "ORD002",
+    "customer_name": "Alice",
+    "amount_due": 70.00,
+    "currency": "MYR",
+    "payment_status": "UNPAID"
+  },
+  {
+    "order_id": "ORD003",
+    "customer_name": "Bob",
+    "amount_due": 100.00,
+    "currency": "MYR",
+    "payment_status": "UNPAID"
+  },
+  {
+    "order_id": "ORD004",
+    "customer_name": "Cindy",
+    "amount_due": 95.00,
+    "currency": "MYR",
+    "payment_status": "UNPAID"
+  }
+]
