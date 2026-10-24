@@ -1,5 +1,0 @@
-rapidocr>=3.0,<5
-onnxruntime>=1.19,<2
-numpy>=1.26,<3
-Pillow>=10,<13
-runpod>=1.7,<3
