@@ -51,25 +51,63 @@ Orbyte SlipMatch applies AI strictly where it adds value: GenAI text parsing to 
 ## Project Structure
 
 ```text
-.
-├── docs/                                   # Screenshots, diagrams & assets
+SDC2026---Catalyst/
+├── docs/
+│   └── SDC2026_Catalyst_Presentation.pdf
 ├── runpod/
-│   └── handler.py                          # RunPod serverless handler (GPU OCR workload)
+│   └── handler.py
 ├── src/
-│   ├── main.py                             # Master FastAPI server & routing
-│   └── ocr.py                              # OCR extraction helper module
-├── submission/                             # Required hackathon submission documents
-│   ├── SDC2026_Catalyst_Preliminary.pdf      # Preliminary proposal
-│   ├── SDC2026_Catalyst_TechDeclaration.pdf  # Technical & tools declaration
-│   ├── SDC2026_Catalyst_Replit_POU.pdf       # Replit proof of use
-│   └── SDC2026_Catalyst_Runpod_POU.pdf       # RunPod proof of use
+│   ├── __pycache__/
+│   ├── data/
+│   ├── samples/
+│   │   ├── jpg IN ONE/
+│   │   ├── 01-perfect-C001.png
+│   │   ├── 02-combo-C002.png
+│   │   ├── 03-shortpay-C003.png
+│   │   ├── 04-reused-ref-C001.png
+│   │   ├── 05-ambiguous-C004.png
+│   │   ├── 06-low-confidence-C001.png
+│   │   └── 07-not-a-receipt-cat.png
+│   ├── tests/
+│   │   └── test_workflow.py
+│   ├── uploads/
+│   │   ├── 258dd12878.jpg
+│   │   ├── 2785202c8d.jpg
+│   │   ├── 27ae9f5392.jpg
+│   │   ├── 3019f259f4.jpg
+│   │   ├── 5ddd7eccc0.jpg
+│   │   ├── 6db92f526b.jpg
+│   │   └── a1f54a323f.jpg
+│   ├── AI_SETUP_GUIDE.txt
+│   ├── Dockerfile.runpod
+│   ├── START_HERE.txt
+│   ├── ai_helpers.py
+│   ├── app.py
+│   ├── app_cookiehub_cors.py
+│   ├── approval_routes.py
+│   ├── billing_routes.py
+│   ├── catalyst_orbyte_dashboard.html
+│   ├── catalyst_orbyte_dashboard_complete_fixed_v3.html
+│   ├── core.py
+│   ├── demo_fixtures.json
+│   ├── generate_samples.py
+│   ├── main.py
+│   ├── ocr.py
+│   ├── pending_orders.json
+│   ├── products_routes.py
+│   ├── pyproject.toml
+│   ├── requirements-ocr.txt
+│   ├── requirements-runpod.txt
+│   ├── requirements.txt
+│   ├── run_orbyte.bat
+│   ├── runpod_worker.py
+│   ├── sample_whatsapp_messages.txt
+│   ├── setup_database.py
+│   └── used_references.json
+├── submission/
 ├── tests/
-│   └── test_utils.py                       # Unit tests
-├── .env.example                            # Example environment variables template
-├── .gitignore
-├── .replit                                 # Replit run configuration
-├── LICENSE                                 # Apache License 2.0
-├── requirements.txt                        # Python dependencies
+├── .replit
+├── LICENSE
 └── README.md
 
 
