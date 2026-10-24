@@ -21,7 +21,7 @@ An intelligent automation product built for the Orbyte ecosystem that converts u
 | Replit Project | https://replit.com |
 | Live Demo | https://sdc-2026-catalyst.replit.app/ |
 | RunPod Endpoint | https://console.runpod.io/serverless/user/endpoint/6tzygt6b8mtjgt |
-| Slide Deck | Presentation:https://docs.google.com/presentation/d/1uPIV80W6lJlcyAd56q7wniDFDWvIp7h5Lio-QUHiZ1Q/edit?usp=sharing |
+| Slide Deck | https://docs.google.com/presentation/d/1uPIV80W6lJlcyAd56q7wniDFDWvIp7h5Lio-QUHiZ1Q/edit?usp=sharing |
 | Demo Video | https://example.com/demo-video |
 
 ## Overview
