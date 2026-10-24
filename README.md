@@ -1,6 +1,6 @@
-# Project Name
+# Orbyte SlipMatch — Instant Chat-to-Bill Generator & Automated DuitNow Receipt Validator
 
-A one-sentence description of what your project does and who it is for.
+An intelligent automation product for the Orbyte ecosystem that converts WhatsApp chat orders into bills and performs automated three-way receipt validation against bank records to eliminate manual bookkeeping and e-commerce fraud for SMEs.
 
 ## Team Information
 
@@ -8,8 +8,7 @@ A one-sentence description of what your project does and who it is for.
 | --- | --- |
 | **Team Name** | Catalyst |
 | **Team Domain** | Domain 2 |
-| **SDG Track (1–17)** | SDG 8 - Decent Work and Economic Growth |
-|  | SDG 9 - Industry, Innovation and Infrastructure |
+| **SDG Track (1–17)** | SDG 8 - Decent Work and Economic Growth <br> SDG 9 - Industry, Innovation and Infrastructure |
 | **Team Leader** | Ang Yi Xian |
 | **University** | Universiti Malaysia Perlis |
 | **Number of Members** | 5 |
@@ -28,24 +27,24 @@ A one-sentence description of what your project does and who it is for.
 ## Overview
 
 ### Problem
-Describe the real-world problem you are solving in 2–4 sentences. Who is affected, and why does it matter?
+Micro and small enterprises (MSMEs) rely heavily on manual, disconnected workflows across WhatsApp, spreadsheets, and personal banking apps to manage orders and reconcile payments. Owners waste hours every evening parsing unstructured chats and checking bank screenshots, leading to calculation errors and high vulnerability to e-commerce fraud such as edited transfer receipts and reused transaction references.
 
 ### Solution
-Explain how your project uses AI to solve the problem and what makes it valuable.
+Orbyte SlipMatch applies AI strictly where it adds value—using GenAI text parsing to convert unstructured WhatsApp orders into clean bills and RunPod Serverless OCR Vision AI to read payment slips. Robust rule-based three-way matching logic cross-references slips against orders and bank statements, sorting transactions into a traffic-light Kanban dashboard while keeping merchants in complete control via one-click approval and immutable audit logging.
 
 ### Key Features
-* **Feature 1** — Short description.
-* **Feature 2** — Short description.
-* **Feature 3** — Short description.
+- **Chat-to-Bill Generator**: Instantly converts unstructured WhatsApp orders in BM, English, or Manglish into clean structured bills with order IDs.
+- **Automated Receipt Validator**: Uses Vision AI and OCR to extract transfer amounts, dates, and reference numbers for automated verification.
+- **Traffic-Light Kanban & Audit Trail**: Sorts transactions into Green (verified), Yellow (short-pay/check), and Red (fraud risk) for merchant approval and secure logging.
 
 ## Tech Stack
 
 | Layer | Technology |
 | --- | --- |
-| Frontend | e.g. HTML, React |
-| Backend | e.g. Python, Flask / FastAPI |
-| Database | e.g. PostgreSQL, SQLite |
-| AI / Compute | RunPod (GPU) |
+| Frontend | HTML / Replit Web UI |
+| Backend | Python / FastAPI |
+| Database | SQLite |
+| AI / Compute | RunPod (GPU) / GenAI OCR & Text Parsing |
 | Hosting / Dev | Replit |
 
 ## Project Structure
@@ -58,10 +57,10 @@ Explain how your project uses AI to solve the problem and what makes it valuable
     │   ├── main.py                               # Application entry point
     │   └── utils.py                              # Helper functions
     ├── submission/                               # Required submission documents
-    │   ├── SDC2026_TeamName_Preliminary.pdf      # Preliminary submission
-    │   ├── SDC2026_TeamName_TechDeclaration.pdf  # Technology declaration
-    │   ├── SDC2026_TeamName_Replit_POU.pdf       # Replit proof of use
-    │   └── SDC2026_TeamName_Runpod_POU.pdf       # RunPod proof of use
+    │   ├── SDC2026_Catalyst_Preliminary.pdf      # Preliminary submission
+    │   ├── SDC2026_Catalyst_TechDeclaration.pdf  # Technology declaration
+    │   ├── SDC2026_Catalyst_Replit_POU.pdf       # Replit proof of use
+    │   └── SDC2026_Catalyst_Runpod_POU.pdf       # RunPod proof of use
     ├── tests/
     │   └── test_utils.py                         # Unit tests
     ├── .env.example                              # Example environment variables
@@ -74,10 +73,9 @@ Explain how your project uses AI to solve the problem and what makes it valuable
 
 ## Architecture
 
-    User → Replit (App / API) → RunPod Endpoint (GPU model)
+User → Replit (FastAPI App & UI) → RunPod Serverless Endpoint (OCR Vision AI)
            |
-           └──→ Response returned to user
-
+           └──→ Three-Way Matching Logic & Database → Traffic-Light Kanban Approval
 
 ## How to Run
 
@@ -111,24 +109,24 @@ Explain how your project uses AI to solve the problem and what makes it valuable
 
 ## Run Tests
 
-    python -m unittest discover tests
+    python -m uvicorn main:app --reload --port 8000
 
 
 ## How We Use Replit *(Required)*
 
 Describe how your team used Replit. For example:
-* **Development:** Collaborative coding in a shared Repl using Multiplayer.
-* **Hosting:** The app is deployed with Replit Deployments at the Live Demo link above.
-* **Secrets:** API keys are stored in Replit Secrets, never in the code.
+- **Development:** Collaborative project coding, backend FastAPI route handling, and UI prototyping.
+- **Hosting:** The FastAPI application is deployed and hosted on Replit for live preview and judge access.
+- **Secrets:** Secure storage of environment credentials (`RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID`) via Replit Secrets.
 
-Proof of use: `submission/SDC2026_TeamName_Replit_POU.pdf`
+Proof of use: `submission/SDC2026_Catalyst_Replit_POU.pdf`
 
 ## How We Use RunPod *(Required)*
 
 Describe how your team used RunPod. For example:
-* **Workload:** Model inference (e.g. text generation, image processing) runs on a RunPod GPU.
-* **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
-* **Integration:** The Replit app sends requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
+- **Workload:** High-accuracy OCR neural model inference for processing payment slip images, extracting transfer metadata, and performing tamper detection.
+- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
+- **Integration:** The FastAPI application dispatches image processing requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
 
 Example request:
 
@@ -137,15 +135,15 @@ Example request:
       -H "Content-Type: application/json" \
       -d '{"input": {"prompt": "Hello"}}'
 
-Proof of use: `submission/SDC2026_TeamName_Runpod_POU.pdf`
+Proof of use: `submission/SDC2026_Catalyst_Runpod_POU.pdf`
 
 ## Challenges & Learnings
-* What challenges did you face, and how did you overcome them?
-* What did your team learn?
+- **Challenge:** Handling noisy, multi-lingual WhatsApp order phrasing (BM, English, Manglish) and verifying payment receipts across varied bank and e-wallet formats against real bank statements.
+- **Learning:** Combining GenAI text extraction with strict rule-based matching (Three-Way Match and Combo-Math) guarantees deterministic financial accuracy while keeping merchants in total control of approvals.
 
 ## Future Improvements
-- [ ] Improvement 1
-- [ ] Improvement 2
+- [ ] Live bank feed API integration
+- [ ] Automated WhatsApp customer reminder messaging for short-pays
 
 ## Team
 
@@ -153,21 +151,21 @@ Proof of use: `submission/SDC2026_TeamName_Runpod_POU.pdf`
 | --- | --- | --- |
 | Ang Yi Xian | Team Lead | @username |
 | Evelyn Leong Yee Ying | Frontend | @username |
-| Goh Zi Wei | AI / RunPod | @username |
+| Goh Zi Wei | Backend | @username |
 | Loo Zi Yan | AI / RunPod | @username |
 | Wong Kai Yek | AI / RunPod | @username |
 
 ## Submission Checklist
-- [ ] Team name, domain (Domain 1 / Domain 2) and SDG track filled in
-- [ ] Slide deck link added
-- [ ] Demo video link added
-- [ ] Replit used, with proof of use in `submission/`
-- [ ] RunPod used, with proof of use in `submission/`
-- [ ] Preliminary submission completed (`SDC2026_TeamName_Preliminary.pdf`)
-- [ ] Technology declaration completed (`SDC2026_TeamName_TechDeclaration.pdf`)
-- [ ] Submission files renamed with your team name (replace `TeamName`)
-- [ ] "How to Run" steps verified
-- [ ] No API keys or secrets committed to the repository
+- [x] Team name, domain (Domain 2) and SDG track filled in
+- [x] Slide deck link added
+- [x] Demo video link added
+- [x] Replit used, with proof of use in `submission/`
+- [x] RunPod used, with proof of use in `submission/`
+- [x] Preliminary submission completed (`SDC2026_Catalyst_Preliminary.pdf`)
+- [x] Technology declaration completed (`SDC2026_Catalyst_TechDeclaration.pdf`)
+- [x] Submission files renamed with team name (`SDC2026_Catalyst_*`)
+- [x] "How to Run" steps verified
+- [x] No API keys or secrets committed to the repository
 
 ## License
 This project is licensed under the Apache License 2.0.
