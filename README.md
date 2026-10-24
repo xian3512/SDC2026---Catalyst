@@ -149,10 +149,10 @@ Proof of use: `submission/SDC2026_Catalyst_Runpod_POU.pdf`
 | Name | Role | GitHub |
 | --- | --- | --- |
 | Ang Yi Xian | Team Lead / Backend / AI | @xian3512 |
-| Evelyn Leong Yee Ying | Database / Integration | @username |
-| Goh Zi Wei | Backend | @username |
-| Loo Zi Yan | Frontend | @username |
-| Wong Kai Yek | Demo / Database | @username |
+| Evelyn Leong Yee Ying | Database / Integration | @leongyyevelyn-ux |
+| Goh Zi Wei | Backend | @ziwei0501 |
+| Loo Zi Yan | Frontend | @loozy2003 |
+| Wong Kai Yek | Demo / Database | @KaiYek |
 
 ## Submission Checklist
 - [x] Team name, domain (Domain 2) and SDG track filled in
