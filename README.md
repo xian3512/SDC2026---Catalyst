@@ -18,7 +18,7 @@ An intelligent automation product built for the Orbyte ecosystem that converts u
 | Resource | Link |
 | --- | --- |
 | GitHub Repository | https://github.com/xian3512/SDC2026---Catalyst/ |
-| Replit Project | https://replit.com |
+| Replit Project | https://sdc-2026-catalyst.replit.app/ |
 | Live Demo | https://sdc-2026-catalyst.replit.app/ |
 | RunPod Endpoint | https://console.runpod.io/serverless/user/endpoint/6tzygt6b8mtjgt |
 | Slide Deck | https://docs.google.com/presentation/d/1uPIV80W6lJlcyAd56q7wniDFDWvIp7h5Lio-QUHiZ1Q/edit?usp=sharing |
