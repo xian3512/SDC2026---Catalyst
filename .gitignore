@@ -1,4 +1,12 @@
+# Protect Runpod credentials
 .env
+.env.*
+!.env.example
+
+# Python cache files
 __pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
 venv/
-.DS_Store

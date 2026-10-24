@@ -1,171 +1,148 @@
-# Orbyte SlipMatch — Instant Chat-to-Bill Generator & Automated DuitNow Receipt Validator
+# Orbyte Role 3 — AI Payment Slip Matcher (Hackathon Starter)
 
-An intelligent automation product for the Orbyte ecosystem that converts WhatsApp chat orders into bills and performs automated three-way receipt validation against bank records to eliminate manual bookkeeping and e-commerce fraud for SMEs.
+**What is real in this starter?** FastAPI, image upload validation, English/Malay text parsing, duplicate-reference risk checks, invoice matching with exact cents, bounded multi-invoice (Combo Math) matching, traffic lights, and a human-review fallback.
 
-## Team Information
+**What is simulated?** Demo OCR returns known data for ONLY the supplied sample images (checked by SHA256), and orders/used references are synthetic. No actual bank integration, payment confirmation, reliable edited-image detection or real-life fraud verification is provided.
 
-| Field | Details |
-| --- | --- |
-| **Team Name** | Catalyst |
-| **Team Domain** | Domain 2 |
-| **SDG Track (1–17)** | SDG 8 - Decent Work and Economic Growth <br> SDG 9 - Industry, Innovation and Infrastructure |
-| **Team Leader** | Ang Yi Xian |
-| **University** | Universiti Malaysia Perlis |
-| **Number of Members** | 5 |
+**What is optional?** Actual OCR via RapidOCR locally or on a custom Runpod Serverless worker. Accuracy on real receipts must be tested. Existing Runpod endpoints with different output formats are NOT plug-and-play.
 
-## Links
+## 1. Quick start — works without a Runpod account
 
-| Resource | Link |
-| --- | --- |
-| GitHub Repository | [https://github.com/xian3512/SDC2026---Catalyst/tree/main] |
-| Replit Project | https://replit.com/@your-username/your-project |
-| Live Demo | https://your-project.replit.app |
-| RunPod Endpoint | [https://console.runpod.io/serverless/user/endpoint/6tzygt6b8mtjgt] |
-| Slide Deck | [https://docs.google.com/presentation/d/1uPIV80W6lJlcyAd56q7wniDFDWvIp7h5Lio-QUHiZ1Q/edit?usp=sharing] |
-| Demo Video | https://example.com/demo-video |
+Python 3.10+ is recommended (3.11 is tested). Open a terminal in this folder.
 
-## Overview
+### Windows PowerShell
 
-### Problem
-Micro and small enterprises (MSMEs) rely heavily on manual, disconnected workflows across WhatsApp, spreadsheets, and personal banking apps to manage orders and reconcile payments. Owners waste hours every evening parsing unstructured chats and checking bank screenshots, leading to calculation errors and high vulnerability to e-commerce fraud such as edited transfer receipts and reused transaction references.
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python -m uvicorn app:app --reload --port 8000
+```
 
-### Solution
-Orbyte SlipMatch applies AI strictly where it adds value—using GenAI text parsing to convert unstructured WhatsApp orders into clean bills and RunPod Serverless OCR Vision AI to read payment slips. Robust rule-based three-way matching logic cross-references slips against orders and bank statements, sorting transactions into a traffic-light Kanban dashboard while keeping merchants in complete control via one-click approval and immutable audit logging.
+PowerShell activation blocked? Use `\.venv\Scripts\python.exe -m pip install -r requirements.txt` and `\.venv\Scripts\python.exe -m uvicorn app:app --reload --port 8000` instead.
 
-### Key Features
-- **Chat-to-Bill Generator**: Instantly converts unstructured WhatsApp orders in BM, English, or Manglish into clean structured bills with order IDs.
-- **Automated Receipt Validator**: Uses Vision AI and OCR to extract transfer amounts, dates, and reference numbers for automated verification.
-- **Traffic-Light Kanban & Audit Trail**: Sorts transactions into Green (verified), Yellow (short-pay/check), and Red (fraud risk) for merchant approval and secure logging.
+### macOS / Linux
 
-## Tech Stack
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m uvicorn app:app --reload --port 8000
+```
 
-| Layer | Technology |
-| --- | --- |
-| Frontend | HTML / Replit Web UI |
-| Backend | Python / FastAPI |
-| Database | SQLite |
-| AI / Compute | RunPod (GPU) / GenAI OCR & Text Parsing |
-| Hosting / Dev | Replit |
+Go to **http://127.0.0.1:8000/docs** -> `POST /analyze` -> `Try it out`.
 
-## Project Structure
+- Set `customer_id` to `C001` and choose `samples/01-perfect-C001.png` -> GREEN.
+- `C002`, `samples/02-combo-C002.png` -> GREEN with 2 invoices.
+- `C003`, `samples/03-shortpay-C003.png` -> YELLOW with `short_pay_remaining=10.00`.
+- `C001`, `samples/04-reused-ref-C001.png` -> RED, reference reuse risk (NOT proved fraudulent).
+- `C004`, `samples/05-ambiguous-C004.png` -> YELLOW; owner chooses.
+- `C001`, `samples/06-low-confidence-C001.png` -> YELLOW.
+- `C001`, `samples/07-not-a-receipt-cat.png` -> YELLOW.
 
-    .
-    ├── docs/                                     # Screenshots, diagrams
-    ├── runpod/
-    │   └── handler.py                            # RunPod serverless handler (GPU workload)
-    ├── src/
-    │   ├── main.py                               # Application entry point
-    │   └── utils.py                              # Helper functions
-    ├── submission/                               # Required submission documents
-    │   ├── SDC2026_Catalyst_Preliminary.pdf      # Preliminary submission
-    │   ├── SDC2026_Catalyst_TechDeclaration.pdf  # Technology declaration
-    │   ├── SDC2026_Catalyst_Replit_POU.pdf       # Replit proof of use
-    │   └── SDC2026_Catalyst_Runpod_POU.pdf       # RunPod proof of use
-    ├── tests/
-    │   └── test_utils.py                         # Unit tests
-    ├── .env.example                              # Example environment variables
-    ├── .gitignore
-    ├── .replit                                   # Replit run configuration
-    ├── LICENSE
-    ├── requirements.txt                          # Python dependencies
-    └── README.md
+**This demo OCR is fixture-based, not real AI; do not imply otherwise to judges.**
 
+## 2. Run tests
 
-## Architecture
+In a second terminal, with the environment activated:
 
-User → Replit (FastAPI App & UI) → RunPod Serverless Endpoint (OCR Vision AI)
-           |
-           └──→ Three-Way Matching Logic & Database → Traffic-Light Kanban Approval
+```bash
+python -m pytest -q
+```
 
-## How to Run
+## 3. Switch from demo fixtures to real OCR (local)
 
-### Option 1 — Run on Replit (Recommended)
+Install the optional inference dependency (can be large):
 
-1. Open the Replit Project, or import this repository via **Create Repl → Import from GitHub**.
-2. Open the **Secrets** tab and add the variables listed in `.env.example`:
-   * `RUNPOD_API_KEY`
-   * `RUNPOD_ENDPOINT_ID`
-3. Click **Run**. Replit uses the `.replit` file to start `python src/main.py`.
+```bash
+python -m pip install -r requirements-ocr.txt
+```
 
-### Option 2 — Run Locally
+Set the mode **in the same terminal** before starting the server:
 
-    # 1. Clone the repository
-    git clone https://github.com/your-username/your-project.git
-    cd your-project
+- Windows PowerShell: `$env:OCR_PROVIDER="rapidocr"`
+- macOS/Linux: `export OCR_PROVIDER=rapidocr`
 
-    # 2. Create and activate a virtual environment
-    python -m venv venv
-    source venv/bin/activate       # Windows: venv\Scripts\activate
+Then start `python -m uvicorn app:app --reload --port 8000`. Upload a *new* synthetic receipt image. The OCR is real, but extraction heuristics and OCR confidence may be imperfect; low confidence and missed fields go to YELLOW. The DEMO fixture tests assume `OCR_PROVIDER=demo`; switch back to demo for those tests.
 
-    # 3. Install dependencies
-    pip install -r requirements.txt
+**Note:** RapidOCR model weights/dependencies may be downloaded or installed automatically. A current, capable machine is recommended. Speed and accuracy may vary with receipt layout.
 
-    # 4. Configure environment variables
-    cp .env.example .env           # then fill in your values
+## 4. Connect Role 2 / Role 4
 
-    # 5. Run the app
-    python src/main.py
+**Contract (v1):**
 
+`POST /analyze`, `multipart/form-data`:
 
-## Run Tests
+- field `file`: PNG/JPEG image, max 5 MB
+- field `customer_id`: e.g. `C002`
 
-    python -m uvicorn main:app --reload --port 8000
+Response excerpt:
 
+```json
+{
+  "traffic_light": "GREEN",
+  "reason_code": "COMBO_AMOUNT_MATCH",
+  "message": "Multiple invoices sum to payment amount. Owner must confirm bank receipt.",
+  "extracted": {"amount": "150.00", "date": "20/10/2026", "reference": "REF-15002", "confidence": 0.98},
+  "matched_orders": [{"order_id": "ORD-2001", "amount_due": "60.00"}, {"order_id": "ORD-2002", "amount_due": "90.00"}],
+  "short_pay_remaining": null,
+  "human_approval_required": true,
+  "bank_payment_verified": false
+}
+```
 
-## How We Use Replit *(Required)*
+Minimal Replit/JS frontend call:
 
-Describe how your team used Replit. For example:
-- **Development:** Collaborative project coding, backend FastAPI route handling, and UI prototyping.
-- **Hosting:** The FastAPI application is deployed and hosted on Replit for live preview and judge access.
-- **Secrets:** Secure storage of environment credentials (`RUNPOD_API_KEY`, `RUNPOD_ENDPOINT_ID`) via Replit Secrets.
+```javascript
+const form = new FormData();
+form.append("file", uploadedFile); // <input type="file"> File object
+form.append("customer_id", "C002");
+const response = await fetch("https://YOUR-API-URL/analyze", {
+  method: "POST",
+  body: form,
+});
+if (!response.ok) throw new Error(`Upload failed: ${response.status}`);
+const result = await response.json();
+console.log(result.traffic_light, result.matched_orders);
+```
 
-Proof of use: `submission/SDC2026_Catalyst_Replit_POU.pdf`
+If frontend and API are on different origins, set environment variable `FRONTEND_ORIGIN` to the *exact* deployed frontend origin and restart the API. Avoid permissive `*` CORS for any public app.
 
-## How We Use RunPod *(Required)*
+Role 4 owns orders storage, audit trail and approvals. The sample API **does not** update any payment/order state. This avoids treating OCR matches as confirmed payments.
 
-Describe how your team used RunPod. For example:
-- **Workload:** High-accuracy OCR neural model inference for processing payment slip images, extracting transfer metadata, and performing tamper detection.
-- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
-- **Integration:** The FastAPI application dispatches image processing requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
+## 5. Runpod cloud OCR — Stage 2, not required for today's demo
 
-Example request:
+This project includes a **custom Runpod worker sample**. It runs RapidOCR inside Runpod (a cloud-hosted OCR engine), not a Vision LLM. To meet any explicit Vision LLM requirement, replace the worker inference with an approved VL model and keep the same JSON result schema.
 
-    curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/runsync \
-      -H "Authorization: Bearer $RUNPOD_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{"input": {"prompt": "Hello"}}'
+1. Check official Runpod docs on packaging a custom Serverless Docker worker and endpoint. A GPU worker costs money; monitor usage and stop unused deployments.
+2. Build/push a Docker image containing `Dockerfile.runpod`, `core.py`, `ocr.py`, `runpod_worker.py` and `requirements-runpod.txt`. This requires a container registry and Runpod endpoint configuration; **the zip does not deploy it for you**.
+3. Create a Serverless endpoint for your image; copy its endpoint ID and API key into **server-side environment variables**, never a frontend script or repo.
+4. Set `OCR_PROVIDER=runpod`, `RUNPOD_ENDPOINT_ID=...`, `RUNPOD_API_KEY=...` in the FastAPI host. Restart server.
+5. API submits `image_base64` to `/runsync` and expects returned `output` to contain `{amount, date, reference, confidence, raw_text}`. If the job is not completed/returns invalid JSON, this starter safely assigns YELLOW/manual review (no silent fake result).
+6. Confirm one real test request end-to-end before promoting this mode. Runpod timeout/cold start and pricing will vary.
 
-Proof of use: `submission/SDC2026_Catalyst_Runpod_POU.pdf`
+Runpod API docs: https://docs.runpod.io/serverless/endpoints/operation-reference
+Worker docs: https://docs.runpod.io/serverless/workers/handlers/overview
 
-## Challenges & Learnings
-- **Challenge:** Handling noisy, multi-lingual WhatsApp order phrasing (BM, English, Manglish) and verifying payment receipts across varied bank and e-wallet formats against real bank statements.
-- **Learning:** Combining GenAI text extraction with strict rule-based matching (Three-Way Match and Combo-Math) guarantees deterministic financial accuracy while keeping merchants in total control of approvals.
+## 6. Who owns what (agreement with teammates)
 
-## Future Improvements
-- [ ] Live bank feed API integration
-- [ ] Automated WhatsApp customer reminder messaging for short-pays
+- Role 3: `core.py`, OCR parsing, matching logic, and `ocr.py` / `runpod_worker.py`.
+- Role 4: synthetic orders, API hosting, connection to Runpod, persistence, audit log and approvals.
+- Role 2: staff-upload and owner-review UI, Kanban GREEN/YELLOW/RED.
+- Role 5: test images, QA, edge cases and demo fallback.
+- Role 1: judge pitch, disclosure of demo vs live features, privacy and human-approval narrative.
 
-## Team
+## 7. Acceptance criteria for Day 1
 
-| Name | Role | GitHub |
-| --- | --- | --- |
-| Ang Yi Xian | Team Lead | @username |
-| Evelyn Leong Yee Ying | Frontend | @username |
-| Goh Zi Wei | Backend | @username |
-| Loo Zi Yan | AI / RunPod | @username |
-| Wong Kai Yek | AI / RunPod | @username |
+- [ ] `/health` responds.
+- [ ] `/docs` loads in a browser.
+- [ ] Perfect slip C001 is GREEN with one invoice.
+- [ ] Combo slip C002 is GREEN with two invoices.
+- [ ] Short-pay slip C003 is YELLOW with `10.00` shortfall.
+- [ ] Duplicated reference is RED but labeled **risk**, not proof of fraud.
+- [ ] Cat image is YELLOW, never auto-approved.
+- [ ] No result has `bank_payment_verified: true`.
 
-## Submission Checklist
-- [x] Team name, domain (Domain 2) and SDG track filled in
-- [x] Slide deck link added
-- [x] Demo video link added
-- [x] Replit used, with proof of use in `submission/`
-- [x] RunPod used, with proof of use in `submission/`
-- [x] Preliminary submission completed (`SDC2026_Catalyst_Preliminary.pdf`)
-- [x] Technology declaration completed (`SDC2026_Catalyst_TechDeclaration.pdf`)
-- [x] Submission files renamed with team name (`SDC2026_Catalyst_*`)
-- [x] "How to Run" steps verified
-- [x] No API keys or secrets committed to the repository
+## Important limitations
 
-## License
-This project is licensed under the Apache License 2.0.
+This is a **synthetic hackathon prototype**, not a production financial or forensic product. Never use real bank slips or personal financial data without permission and privacy controls. The `GREEN` board column means invoice *amount* matched, NOT that payment was received. Approval must be done by an authorized human after checking independent bank records. Do not label an altered image 'fraudulent' based only on OCR or blurry fonts.

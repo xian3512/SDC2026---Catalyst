@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CATALYST | Orbyte SlipMatch Owner Dashboard</title>
+<style>
+:root{--bg:#f7f3ed;--paper:#fffdf9;--ink:#30231c;--muted:#817166;--line:#e9ded2;--brown:#4b2d20;--brown2:#704832;--gold:#d5a45e;--green:#28734d;--yellow:#a66a13;--red:#b23d35;--shadow:0 8px 28px #3923190c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:235px 1fr;min-height:100vh}.side{background:var(--brown);color:#fff4e7;padding:24px 16px;display:flex;flex-direction:column;gap:22px}.brand{display:flex;gap:11px;align-items:center;padding:0 8px 20px;border-bottom:1px solid #ffffff22}.brandmark{width:43px;height:43px;border-radius:13px;background:#f0c88e;color:#4b2d20;display:grid;place-items:center;font-weight:900;font-size:19px}.brand strong{letter-spacing:1.3px;font-size:18px}.brand small{display:block;color:#d9bda7}.navlabel{color:#cdb19e;font-size:10px;letter-spacing:2px;padding:0 12px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#ead7c7;text-align:left;padding:11px 12px;border-radius:9px;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#ffffff18;color:#fff}.nav .ico{width:20px;text-align:center;font-size:16px}.side-note{margin-top:auto;border:1px solid #ffffff20;border-radius:12px;padding:13px;color:#dfcbbb;font-size:12px}.side-note b{display:block;color:white;margin-bottom:5px}main{padding:28px;min-width:0}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:23px}.eyebrow{color:#9a704d;font-size:10px;font-weight:800;letter-spacing:2px}.top h1{font-size:27px;margin:4px 0}.muted{color:var(--muted)}.topright{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.owner-key-global{width:190px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}.api-pill{border:1px solid var(--line);background:var(--paper);border-radius:30px;padding:8px 12px;font-size:12px}.api-pill i{display:inline-block;width:7px;height:7px;background:#b9a89a;border-radius:50%;margin-right:7px}.page{display:none}.page.active{display:block}.hero{background:linear-gradient(115deg,#4b2d20,#765039);color:#fff5e8;border-radius:17px;padding:25px 27px;display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:19px;overflow:hidden}.hero h2{font-size:24px;margin:5px 0}.hero p{margin:0;color:#e3cbb9;max-width:650px}.hero-mark{font-weight:900;font-size:26px;letter-spacing:3px;color:#ffffff18;transform:rotate(-90deg)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:18px}.kpi,.panel{background:var(--paper);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.kpi{padding:17px}.kpi .klabel{font-size:12px;color:var(--muted)}.kpi .value{font-size:27px;font-weight:800;margin:5px 0}.kpi .foot{font-size:11px;color:var(--muted)}.panel{padding:19px;margin-bottom:16px;min-width:0}.panel-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}.panel h3{margin:0 0 4px;font-size:16px}.panel p{margin:0}.btn{border:1px solid var(--line);border-radius:8px;padding:9px 13px;background:#fff;color:var(--ink);font-weight:700;font-size:12px}.btn.primary{background:var(--brown);border-color:var(--brown);color:white}.btn.gold{background:#f4e4ca;border-color:#ead0a7;color:#563923}.btn.danger{background:#fff1ef;border-color:#efc7c2;color:#a52e27}.btn:disabled{opacity:.5;cursor:wait}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:grid;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:11px;font-weight:800;color:#6f5a4c}.field input,.field select,.field textarea{width:100%;border:1px solid #ded0c1;border-radius:8px;background:#fff;padding:10px;color:var(--ink);min-width:0}.field textarea{min-height:115px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid #e5c99e;border-color:#bd8b52}.hint{font-size:11px;color:var(--muted);margin-top:11px!important}.result{display:none;background:#f8f0e6;border:1px solid var(--line);border-radius:9px;padding:12px;margin-top:13px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:400px;overflow:auto}.result.show{display:block}.result-card{display:grid;gap:10px}.result-card h4{margin:0;font-size:15px}.result-card p{margin:0}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.result-item{background:#fffaf4;border:1px solid var(--line);border-radius:8px;padding:10px}.result-item small{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.6px}.result-item strong{display:block;margin-top:3px;overflow-wrap:anywhere}.result-note{padding:10px 12px;background:#fffaf4;border-radius:8px;border:1px solid var(--line)}.loading-dot{display:inline-block;width:12px;height:12px;border:2px solid #ffffff80;border-top-color:#fff;border-radius:50%;vertical-align:-2px;margin-right:7px;animation:orbyte-spin .8s linear infinite}@keyframes orbyte-spin{to{transform:rotate(360deg)}}.btn:disabled .loading-dot{display:inline-block}@media(max-width:600px){.result-grid{grid-template-columns:1fr}}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px;min-width:650px}th,td{text-align:left;padding:10px 9px;border-bottom:1px solid #eee4da;vertical-align:top}th{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:#8b7666;background:#fcf8f2}td .btn{padding:6px 8px;margin:2px}.badge{display:inline-block;border-radius:30px;padding:4px 8px;font-size:10px;font-weight:800;background:#eee5da;color:#6c5545}.badge.green{background:#dff2e6;color:#246743}.badge.yellow{background:#fff0cf;color:#8a590d}.badge.red{background:#fde3e0;color:#a8322c}.quickgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.quick{border:1px solid var(--line);border-radius:11px;padding:15px;background:#fffaf4}.quick strong{display:block;margin:7px 0 4px}.quick p{color:var(--muted);font-size:12px;margin-bottom:12px}.toast{position:fixed;right:20px;bottom:20px;background:#30231c;color:white;padding:12px 16px;border-radius:9px;display:none;max-width:360px;z-index:20}.toast.show{display:block}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.toolbar input{padding:9px;border:1px solid var(--line);border-radius:8px}.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}.hidden{display:none!important}
+@media(max-width:1000px){.shell{grid-template-columns:190px 1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quickgrid{grid-template-columns:1fr}.split{grid-template-columns:1fr}main{padding:20px}}
+@media(max-width:680px){.shell{display:block}.side{padding:12px;gap:12px}.brand{padding-bottom:10px}.side-note,.navlabel{display:none}.nav{display:flex;overflow:auto}.nav button{white-space:nowrap;padding:9px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:23px}.hero-mark{display:none}main{padding:14px}.grid{gap:8px}.kpi{padding:12px}.kpi .value{font-size:22px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.panel{padding:14px}}
+</style></head><body>
+<div class="shell"><aside class="side">
+<div class="brand"><div class="brandmark">C</div><div><strong>CATALYST</strong><small>Orbyte SlipMatch · Owner</small></div></div>
+<div class="navlabel">WORKSPACE</div><nav class="nav">
+<button class="active" data-page="dashboard"><span class="ico">⌂</span>Overview</button>
+<button data-page="billing"><span class="ico">✎</span>WhatsApp Order Entry</button>
+<button data-page="orders"><span class="ico">▤</span>Orders</button>
+<button data-page="slips"><span class="ico">◉</span>Payment Review</button>
+<button data-page="bank"><span class="ico">▥</span>Bank Statement</button>
+<button data-page="products"><span class="ico">▦</span>Products</button>
+<button data-page="audit"><span class="ico">≡</span>Audit Logs</button>
+</nav><div class="side-note"><b>Payment safety</b>SlipMatch suggests matches and flags risks. Confirm real credits in the bank statement before treating a payment as verified.</div>
+</aside><main>
+<header class="top"><div><div class="eyebrow">CATALYST HOMEMADE BAKES & COOKIES</div><h1 id="title">Owner overview</h1><div class="muted" id="subtitle">Live operations, order capture and payment review.</div></div><div class="topright"><input class="owner-key-global" id="globalOwnerKey" type="password" autocomplete="current-password" placeholder="Owner key (save once)" aria-label="Owner key for protected actions"><span class="api-pill"><i id="apiDot"></i><span id="apiText">Connecting…</span></span><button class="btn" id="refreshAll">↻ Refresh</button></div></header>
+<section class="page active" id="page-dashboard">
+<div class="hero"><div><div class="eyebrow" style="color:#e8c89e">OWNER WORKSPACE</div><h2>Good day. Let’s keep every order accounted for.</h2><p>Capture customer messages, create invoices, review slips, match bank credits and keep an audit trail — all from one place.</p></div><div class="hero-mark">CATALYST</div></div>
+<div class="grid">
+<div class="kpi"><div class="klabel">Total orders</div><div class="value" id="kOrders">—</div><div class="foot">All orders in database</div></div>
+<div class="kpi"><div class="klabel">Paid orders</div><div class="value" id="kPaid">—</div><div class="foot">Owner-approved matches</div></div>
+<div class="kpi"><div class="klabel">Unpaid orders</div><div class="value" id="kUnpaid">—</div><div class="foot">Awaiting payment</div></div>
+<div class="kpi"><div class="klabel">Revenue collected</div><div class="value" id="kRevenue">—</div><div class="foot">Paid orders only</div></div>
+</div><div class="grid">
+<div class="kpi"><div class="klabel">Green · approved</div><div class="value" id="kGreen">—</div><div class="foot">Reviewed and approved</div></div>
+<div class="kpi"><div class="klabel">Yellow · review</div><div class="value" id="kYellow">—</div><div class="foot">Needs manual review</div></div>
+<div class="kpi"><div class="klabel">Red · flagged</div><div class="value" id="kRed">—</div><div class="foot">Potential fraud / mismatch</div></div>
+<div class="kpi"><div class="klabel">Latest refresh</div><div class="value" style="font-size:19px" id="lastRefresh">—</div><div class="foot">Live API data</div></div>
+</div>
+<div class="panel"><div class="panel-head"><div><h3>Quick actions</h3><p class="muted">Start the most common owner tasks.</p></div></div><div class="quickgrid">
+<div class="quick"><span class="badge">01 · ORDER CAPTURE</span><strong>Turn a customer message into an order</strong><p>Paste a WhatsApp message. Preview recognized flavours, quantities, pickup date and total before confirming.</p><button class="btn primary" data-go="billing">Create order →</button></div>
+<div class="quick"><span class="badge">02 · PAYMENT REVIEW</span><strong>Analyze a receipt</strong><p>Upload a PNG/JPEG slip and review matching orders, duplicate references and short payments.</p><button class="btn primary" data-go="slips">Review payments →</button></div>
+<div class="quick"><span class="badge">03 · ACCOUNTING</span><strong>Check bank credits & export</strong><p>Compare statement transactions, inspect decisions and export order records as CSV.</p><button class="btn" data-go="bank">Open bank statement →</button></div>
+</div></div>
+<div class="panel"><div class="panel-head"><div><h3>Recent orders</h3><p class="muted">Latest records returned by the backend.</p></div><button class="btn" data-go="orders">View all orders</button></div><div class="tablewrap" id="recentOrders">Loading…</div></div>
+</section>
+<section class="page" id="page-billing">
+<div class="panel"><div class="panel-head"><div><h3>WhatsApp message → order preview</h3><p class="muted">Paste a customer's message in natural language. The backend parses cookie flavours, quantities and pickup date.</p></div><span class="badge">POST /billing/preview</span></div>
+<div class="formgrid"><div class="field full"><label for="customerName">Customer name (optional if included in message)</label><input id="customerName" placeholder="e.g. Aisyah Rahman"></div><div class="field full"><label for="requestText">Customer WhatsApp message</label><textarea id="requestText" placeholder="Hi, I'm Aisyah. Can I order 2 classic chocolate chip and 3 matcha white chocolate cookies for pickup tomorrow?"></textarea></div></div>
+<div class="actions"><button class="btn" id="previewBilling">Preview order</button><button class="btn primary" id="confirmBilling">Confirm & create order</button><button class="btn" id="clearBilling">Clear</button></div>
+<p class="hint">Confirm creates a real order in the database and generates an invoice. It requires the owner key configured in your backend. Preview does not create an order.</p><div id="billingResult" class="result"></div>
+<div id="invoicePanel" class="result"><div id="invoiceText"></div><div class="actions"><button class="btn" id="copyReceipt">Copy customer receipt</button><button class="btn" id="downloadInvoice">Download invoice image</button></div><img id="invoiceImage" alt="Generated order invoice" style="max-width:100%;display:block;margin-top:12px;border-radius:8px"></div>
+</div></section>
+<section class="page" id="page-orders"><div class="panel"><div class="panel-head"><div><h3>Order register</h3><p class="muted">Live data from <code>/orders</code>. Search, inspect payment status and export records.</p></div><div class="toolbar"><input id="orderSearch" placeholder="Search order / customer"><button class="btn" id="exportCsv">Export CSV</button><button class="btn primary" id="reloadOrders">Reload</button></div></div><div id="ordersTable" class="tablewrap">Loading orders…</div></div><div class="panel"><h3>Delete order history</h3><p class="muted">Delete one order from the table, or clear all order records. Clearing order history keeps the product catalogue and payment slips.</p><p class="hint">Owner authorization is required. Deleted orders cannot be restored.</p><div class="actions"><button class="btn danger" id="deleteOrderHistory">Delete all order history</button></div><div id="orderHistoryResult" class="result"></div></div></section>
+<section class="page" id="page-slips"><div class="split"><div class="panel"><div class="panel-head"><div><h3>Analyze payment slip</h3><p class="muted">Upload a PNG or JPEG up to 5 MB. SlipMatch checks unpaid orders and flags reused references.</p></div><span class="badge">POST /analyze</span></div>
+<div class="formgrid"><div class="field full"><label for="slipUpload">Payment slip image</label><input type="file" id="slipUpload" accept="image/png,image/jpeg"></div></div><div class="actions"><button class="btn primary" id="analyzeSlip">Analyze slip</button><button class="btn" id="reloadSlips">Reload review queue</button></div><div id="analyzeResult" class="result"></div><p class="hint">GREEN/YELLOW/RED are risk signals. Only an owner decision changes the review status; approval updates matched orders to PAID.</p></div>
+<div class="panel"><div class="panel-head"><div><h3>Payment review queue</h3><p class="muted">Review saved slips and make an owner decision.</p></div><button class="btn" id="refreshSlips">Refresh</button></div><div id="slipQueue" class="tablewrap">Loading slips…</div></div></div></section>
+<section class="page" id="page-bank"><div class="panel"><div class="panel-head"><div><h3>Bank statement viewer</h3><p class="muted">Statement transactions used for three-way matching.</p></div><button class="btn primary" id="reloadBank">Refresh transactions</button></div><div id="bankInfo" class="muted" style="margin-bottom:10px"></div><div id="bankTable" class="tablewrap">Loading bank statement…</div></div></section>
+<section class="page" id="page-products"><div class="split"><div class="panel"><div class="panel-head"><div><h3>Product catalogue</h3><p class="muted">View and manage the products configured in the backend database.</p></div><button class="btn" id="reloadProducts">Refresh</button></div><div id="productTable" class="tablewrap">Loading products…</div></div>
+<div class="panel"><h3>Add product</h3><p class="muted" style="margin-bottom:13px">Adds a new catalogue entry using POST /products/.</p><div class="formgrid"><div class="field full"><label for="newProductName">Product name</label><input id="newProductName" placeholder="Product name"></div><div class="field"><label for="newProductUnit">Size / unit</label><input id="newProductUnit" value="1 pc"></div><div class="field"><label for="newProductPrice">Price (RM)</label><input id="newProductPrice" type="number" min=".01" step=".01" placeholder="5.00"></div></div><div class="actions"><button class="btn primary" id="addProduct">Add product</button></div><div id="productResult" class="result"></div><p class="hint">Product names and prices come from the current backend database. Update your database catalogue to the CATALYST menu if the stored items differ.</p></div></div></section>
+<section class="page" id="page-audit"><div class="panel"><div class="panel-head"><div><h3>Audit trail</h3><p class="muted">Latest owner actions and system events, returned by GET /audit-logs.</p></div><button class="btn primary" id="reloadAudit">Refresh logs</button></div><div id="auditTable" class="tablewrap">Loading audit logs…</div></div>
+<div class="panel"><h3>Danger zone · clear transaction history</h3><p class="muted">Permanently deletes orders, payment slips, payment matches, bank statement transactions, and audit logs. Product Catalogue is kept.</p><p class="hint">Uses the owner key entered once in the top-right session field.</p><div class="actions"><button class="btn danger" id="resetHistory">Reset all history</button></div><div id="resetResult" class="result"></div></div></section>
+</main></div><div class="toast" id="toast"></div>
+<script>
+const API = location.protocol === "file:" ? "http://127.0.0.1:8000" : location.origin;
+const titles={dashboard:["Owner overview","Live operations, order capture and payment review."],billing:["WhatsApp Order Entry","Parse customer messages, preview totals and create orders."],orders:["Orders","Inspect order records and export accounting data."],slips:["Payment Review","Analyze slips, review risk and record owner decisions."],bank:["Bank Statement","Inspect bank credits used for payment verification."],products:["Product Catalogue","Manage products configured in the backend database."],audit:["Audit Logs","Review owner decisions and reset demo history when required."]};
+const $=id=>document.getElementById(id);
+function toast(m){$("toast").textContent=m;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),3500)}
+function showResult(id,content){$(id).classList.add("show");$(id).textContent=typeof content==="string"?content:JSON.stringify(content,null,2)}
+function resultHtml(id, html){const el=$(id);el.classList.add("show");el.innerHTML=html}
+function money(v){const n=Number(v);return "RM "+(Number.isFinite(n)?n:0).toFixed(2)}
+function renderOrderResult(d, heading="Order result"){
+  const items=Array.isArray(d.items)?d.items:[];
+  const total=d.total_rm??d.total_amount_rm??d.amount_rm??0;
+  const itemHtml=items.length?`<div class="result-note"><b>Items</b><ul style="margin:6px 0 0;padding-left:20px">${items.map(i=>`<li>${esc(i.quantity??1)} × ${esc(i.product_name||i.name||i.sku||"Item")} ${i.unit?`(${esc(i.unit)})`:""}${i.subtotal_cents!=null?` · ${money(Number(i.subtotal_cents)/100)}`:""}</li>`).join("")}</ul></div>`:"";
+  const msg=d.message||"Order details updated successfully.";
+  const reviewHtml=d.needs_review?`<div class="result-note"><b>Manual review recommended</b><p style="margin-top:5px">${esc(d.review_reason||"Please check the extracted items and quantities before confirming.")}</p></div>`:"";
+  const parserHtml=d.parser==="openai"?`<p class="muted">AI-assisted message analysis · Prices are calculated from your product catalogue.</p>`:"";
+  return `<div class="result-card"><h4>${esc(heading)}</h4><p>${esc(msg)}</p>${parserHtml}${reviewHtml}<div class="result-grid"><div class="result-item"><small>Order ID</small><strong>${esc(d.order_id||"—")}</strong></div><div class="result-item"><small>Customer</small><strong>${esc(d.customer_name||"—")}</strong></div><div class="result-item"><small>Total amount</small><strong>${money(total)}</strong></div><div class="result-item"><small>Payment status</small><strong>${badge(d.payment_status||d.status||"UNPAID")}</strong></div></div>${d.order_reference?`<p class="muted">Payment reference: <b>${esc(d.order_reference)}</b></p>`:""}${itemHtml}</div>`
+}
+function renderAnalysisResult(d){
+  const extracted=d.extracted||{}; const matches=Array.isArray(d.matched_orders)?d.matched_orders:[];
+  const risk=d.traffic_light||d.risk_level||"REVIEW";
+  const matchHtml=matches.length?`<div class="result-note"><b>Possible matching orders</b>${matches.map(m=>`<div style="padding-top:8px"><b>${esc(m.order_id||"Order")}</b> · ${esc(m.customer_name||"Unknown customer")}<br><span class="muted">Amount due: ${money(m.amount_due??m.amount_rm??0)} · ${esc(m.payment_status||m.status||"Status unavailable")}</span></div>`).join("")}</div>`:`<div class="result-note">No possible matching orders were returned.</div>`;
+  const message=d.message||"Slip analysis completed. Please review the result.";
+  const integrity=d.integrity_check||{};
+  const integrityHtml=`<div class="result-note"><b>Receipt amount consistency</b><p style="margin-top:5px">${esc(integrity.message||"Amount consistency check not available.")}</p>${Array.isArray(integrity.amounts_found_rm)&&integrity.amounts_found_rm.length?`<p class="muted" style="margin-top:5px">Amounts detected near amount/total labels: ${integrity.amounts_found_rm.map(v=>money(v)).map(esc).join(", ")}</p>`:""}</div>`;
+  return `<div class="result-card"><h4>Payment slip analysis</h4><p>${esc(message)}</p><div class="result-grid"><div class="result-item"><small>Risk signal</small><strong>${badge(risk)}</strong></div><div class="result-item"><small>Slip ID</small><strong>${esc(d.slip_id||"—")}</strong></div><div class="result-item"><small>Amount detected</small><strong>${extracted.amount!=null?money(extracted.amount):"Not detected"}</strong></div><div class="result-item"><small>Payment reference</small><strong>${esc(extracted.reference||"Not detected")}</strong></div><div class="result-item"><small>Payment date</small><strong>${esc(extracted.date||"Not detected")}</strong></div><div class="result-item"><small>Bank verified</small><strong>${d.bank_payment_verified===true?badge("Verified"):badge("Not verified")}</strong></div></div>${integrityHtml}${matchHtml}<p class="muted">A screenshot check cannot prove whether an image was edited. Confirm the original receipt and actual bank credit before approving payment.</p></div>`
+}
+function setLoading(button, loading, idleText, loadingText){button.disabled=loading;button.innerHTML=loading?`<span class="loading-dot" aria-hidden="true"></span>${esc(loadingText)}`:esc(idleText);button.setAttribute("aria-busy",loading?"true":"false")}
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+async function api(path,opts={}){
+  let r;
+  try { r = await fetch(API + path, opts); }
+  catch (e) {
+    throw new Error("Cannot reach the Orbyte backend at " + API + ". Start it by running run_orbyte.bat inside your orbyte_role3_starter folder, then open http://127.0.0.1:8000. If the terminal shows an error, fix that error first.");
+  }
+  const raw = await r.text();
+  let d; try { d = JSON.parse(raw); } catch { d = raw; }
+  if (!r.ok) {
+    const detail = d && typeof d === "object" && "detail" in d ? d.detail : null;
+    const message = typeof detail === "string" ? detail : detail ? JSON.stringify(detail) : "HTTP " + r.status + ": " + raw.slice(0, 240);
+    throw new Error(message);
+  }
+  return d;
+}
+function getOwnerKey(){return (sessionStorage.getItem("catalystOwnerKey")||$("globalOwnerKey")?.value.trim()||"").trim()}
+function ownerHeaders(){return {"Content-Type":"application/json","X-Owner-Key":getOwnerKey()}}
+window.addEventListener("DOMContentLoaded",()=>{const el=$("globalOwnerKey");const saved=sessionStorage.getItem("catalystOwnerKey");if(el&&saved)el.value=saved;if(el)el.addEventListener("input",()=>{const value=el.value.trim();if(value)sessionStorage.setItem("catalystOwnerKey",value);else sessionStorage.removeItem("catalystOwnerKey")})});
+function badge(v){let c=String(v||"").toUpperCase(),cl=c.includes("GREEN")||c.includes("PAID")||c.includes("APPROVED")||c==="AVAILABLE"?"green":c.includes("YELLOW")||c.includes("PENDING")||c.includes("UNPAID")||c.includes("HELD")?"yellow":c.includes("RED")||c.includes("REJECT")||c.includes("UNAVAILABLE")?"red":"";return `<span class="badge ${cl}">${esc(v||"—")}</span>`}
+function table(headers,rows){if(!rows.length)return '<p class="muted" style="padding:12px">No records found.</p>';return `<table><thead><tr>${headers.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table>`}
+async function checkHealth(){try{const d=await api("/");$("apiDot").style.background="#28734d";$("apiText").textContent="API online";return d}catch(e){$("apiDot").style.background="#b23d35";$("apiText").textContent="API offline";throw e}}
+async function loadStats(){const d=await api("/dashboard/stats");$("kOrders").textContent=d.orders.total;$("kPaid").textContent=d.orders.paid;$("kUnpaid").textContent=d.orders.unpaid;$("kRevenue").textContent="RM"+Number(d.revenue_collected_rm).toFixed(2);$("kGreen").textContent=d.kanban_counts.green_approved;$("kYellow").textContent=d.kanban_counts.yellow_needs_review;$("kRed").textContent=d.kanban_counts.red_flagged_fraud;$("lastRefresh").textContent=new Date().toLocaleTimeString()}
+async function loadOrders(){const d=await api("/orders");const rows=Array.isArray(d)?d:(Array.isArray(d.orders)?d.orders:[]);const q=($("orderSearch")?.value||"").toLowerCase();const filtered=rows.filter(o=>JSON.stringify(o).toLowerCase().includes(q));const mapped=filtered.map(o=>`<tr><td><b>${esc(o.order_id)}</b></td><td>${esc(o.customer_name)}</td><td>RM${Number(o.amount_due??o.amount_rm??0).toFixed(2)}</td><td>${badge(o.payment_status||o.status)}</td><td>${esc(o.order_reference||"—")}</td><td>${esc(o.created_at||"—")}</td><td><button class="btn danger" data-delete-order="${esc(o.order_id)}">Delete</button></td></tr>`);$("ordersTable").innerHTML=table(["Order ID","Customer","Amount due","Status","Reference","Created","Action"],mapped);$("recentOrders").innerHTML=table(["Order ID","Customer","Amount","Status","Action"],rows.slice(0,6).map(o=>`<tr><td>${esc(o.order_id)}</td><td>${esc(o.customer_name)}</td><td>RM${Number(o.amount_due??o.amount_rm??0).toFixed(2)}</td><td>${badge(o.payment_status||o.status)}</td><td><button class="btn danger" data-delete-order="${esc(o.order_id)}">Delete</button></td></tr>`))}
+async function loadSlips(){
+  const d = await api("/slips");
+  console.log("Slips returned by backend:", d.slips);
+  const slips = Array.isArray(d.slips) ? d.slips : [];
+  const rows = slips.map(s => {
+    const slipId = s.slip_id ?? s.id ?? "";
+    const hasId = String(slipId).trim() !== "";
+    const actions = hasId
+      ? `<div class="toolbar">
+           <button class="btn" data-decision="APPROVE_MATCH" data-slip="${esc(slipId)}">Approve</button>
+           <button class="btn" data-decision="HOLD" data-slip="${esc(slipId)}">Hold</button>
+           <button class="btn danger" data-decision="REJECT" data-slip="${esc(slipId)}">Reject</button>
+           <button class="btn danger" data-delete-slip="${esc(slipId)}" style="margin-left:4px;">Delete</button>
+         </div>`
+      : `<span class="badge red">Missing slip ID — reload / check backend</span>`;
+    const reminder = s.customer_reminder_text ? `<button class="btn" data-copy="${esc(s.customer_reminder_text)}">Copy short-pay reminder</button>` : "";
+    return `<tr><td><b>${esc(hasId ? slipId : "Missing ID")}</b><br><small>${esc(s.filename)}</small></td><td>${esc(s.sender_name)}</td><td>RM${Number(s.amount_rm || (Number(s.amount_cents || 0) / 100)).toFixed(2)}</td><td>${esc(s.reference_number)}</td><td>${badge(s.risk_level)}<br>${esc(s.review_status)}</td><td>${(s.matched_orders || []).map(m => esc(m.order_id)).join(", ") || "—"}</td><td>${actions}${reminder}</td></tr>`;
+  });
+  $("slipQueue").innerHTML = table(["Slip","Sender","Amount","Reference","Risk / review","Matched order(s)","Owner action"], rows);
+}
+async function loadBank(){const d=await api("/bank-statement");$("bankInfo").textContent=`${d.bank_account} · ${d.total_transactions} transactions`; $("bankTable").innerHTML=table(["Time","Bank reference","Description","Credit","Linked slip"],(d.transactions||[]).map(t=>`<tr><td>${esc(t.time)}</td><td>${esc(t.bank_ref)}</td><td>${esc(t.description)}</td><td>RM${Number(t.credit_rm).toFixed(2)}</td><td>${esc(t.linked_slip||"—")}</td></tr>`))}
+async function loadAudit(){const d=await api("/audit-logs");$("auditTable").innerHTML=table(["Time","Entity","ID","Actor","Action","Details"],(d.logs||[]).map(l=>`<tr><td>${esc(l.created_at)}</td><td>${esc(l.entity_type)}</td><td>${esc(l.entity_id)}</td><td>${esc(l.actor_name)}<br>${esc(l.actor_role)}</td><td>${esc(l.action)}</td><td>${esc(l.details)}</td></tr>`))}
+async function loadProducts(){const d=await api("/products/");$("productTable").innerHTML=table(["SKU","Product","Unit","Price","Available","Actions"],(d.products||[]).map(p=>`<tr><td>${esc(p.sku)}</td><td>${esc(p.product_name)}</td><td>${esc(p.unit)}</td><td>RM${Number(p.price_rm).toFixed(2)}</td><td>${badge(p.is_available?"Available":"Unavailable")}</td><td><button class="btn" data-edit-product="${esc(p.sku)}" data-name="${esc(p.product_name)}" data-unit="${esc(p.unit)}" data-price="${Number(p.price_rm)}" data-available="${p.is_available?1:0}">Edit</button><button class="btn danger" data-delete-product="${esc(p.sku)}">Delete</button></td></tr>`))}
+async function refreshAll(){
+  const tasks = [
+    ["health check", checkHealth],
+    ["dashboard stats", loadStats],
+    ["orders", loadOrders],
+    ["payment slips", loadSlips],
+    ["bank statement", loadBank],
+    ["audit logs", loadAudit],
+    ["product list", loadProducts],
+  ];
+  const failures = [];
+  for (const [label, task] of tasks) {
+    try { await task(); }
+    catch (e) {
+      console.error("Refresh failed for " + label + ":", e);
+      failures.push(label + ": " + (e && e.message ? e.message : String(e)));
+    }
+  }
+  if (failures.length) {
+    toast("Some dashboard sections could not refresh. Check the affected section and browser Console.");
+    console.error("Dashboard refresh failures:\n" + failures.join("\n"));
+  } else {
+    toast("Dashboard refreshed from backend.");
+  }
+}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".page").forEach(x=>x.classList.toggle("active",x.id==="page-"+b.dataset.page));$("title").textContent=titles[b.dataset.page][0];$("subtitle").textContent=titles[b.dataset.page][1]}));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>document.querySelector(`[data-page="${b.dataset.go}"]`).click()));
+$("refreshAll").onclick=refreshAll;$("reloadOrders").onclick=loadOrders;$("orderSearch").oninput=()=>loadOrders().catch(e=>toast(e.message));$("reloadSlips").onclick=$("refreshSlips").onclick=loadSlips;$("reloadBank").onclick=loadBank;$("reloadAudit").onclick=loadAudit;$("reloadProducts").onclick=loadProducts;
+$("previewBilling").onclick=async()=>{const b=$("previewBilling");setLoading(b,true,"Preview order","Preparing preview…");try{const d=await api("/billing/preview",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({customer_name:$("customerName").value,request_text:$("requestText").value})});resultHtml("billingResult",renderOrderResult(d,"Order preview"));$("invoicePanel").classList.remove("show")}catch(e){showResult("billingResult","Preview failed: "+e.message)}finally{setLoading(b,false,"Preview order","Preparing preview…")}};
+$("confirmBilling").onclick=async()=>{const b=$("confirmBilling");const key=getOwnerKey();if(!key){toast("Enter your owner key in the field at the top right, then click Confirm again.");$("globalOwnerKey").focus();return}setLoading(b,true,"Confirm & create order","Creating order…");try{const d=await api("/billing/confirm",{method:"POST",headers:{"Content-Type":"application/json","X-Owner-Key":key},body:JSON.stringify({customer_name:$("customerName").value,request_text:$("requestText").value})});resultHtml("billingResult",renderOrderResult(d,"Order created successfully"));$("invoicePanel").classList.add("show");$("invoiceText").textContent=d.customer_receipt_text||d.whatsapp_receipt_text||"";$("invoiceImage").src=d.receipt_image_base64||"";$("invoiceImage").style.display=d.receipt_image_base64?"block":"none";$("copyReceipt").dataset.text=d.customer_receipt_text||d.whatsapp_receipt_text||"";await loadOrders();await loadStats();toast("Order "+d.order_id+" created.")}catch(e){showResult("billingResult","Order confirmation failed: "+e.message)}finally{setLoading(b,false,"Confirm & create order","Creating order…")}};
+$("clearBilling").onclick=()=>{ $("customerName").value="";$("requestText").value="";$("billingResult").classList.remove("show");$("invoicePanel").classList.remove("show")};
+$("copyReceipt").onclick=async()=>{try{await navigator.clipboard.writeText($("copyReceipt").dataset.text||"");toast("Customer receipt copied.")}catch(e){toast("Clipboard blocked by browser. Select and copy the receipt text.")}};
+$("downloadInvoice").onclick=()=>{const src=$("invoiceImage").src;if(!src.startsWith("data:image"))return toast("No invoice image available.");const a=document.createElement("a");a.href=src;a.download="catalyst-invoice.png";a.click()};
+$("analyzeSlip").onclick=async()=>{const b=$("analyzeSlip");if(b.disabled)return;const f=$("slipUpload").files[0];if(!f)return toast("Choose a PNG or JPEG slip first.");if(!["image/png","image/jpeg","image/jpg"].includes(f.type))return toast("Backend accepts PNG or JPEG images only.");if(f.size>5*1024*1024)return toast("Maximum upload size is 5 MB.");const fd=new FormData();fd.append("file",f);setLoading(b,true,"Analyze slip","Analyzing slip… Please wait");resultHtml("analyzeResult",`<div class="result-card" role="status" aria-live="polite"><h4>Analyzing payment slip…</h4><p>Please wait while the receipt is read and checked against unpaid orders. This may take a little time.</p></div>`);try{const d=await api("/analyze",{method:"POST",body:fd});resultHtml("analyzeResult",renderAnalysisResult(d));await Promise.all([loadSlips(),loadStats(),loadOrders()]);toast("Slip analyzed. Review the saved slip in the queue.")}catch(e){showResult("analyzeResult","Analysis failed: "+e.message)}finally{setLoading(b,false,"Analyze slip","Analyzing slip… Please wait")}};
+document.addEventListener("click",async e=>{
+  const deleteSlipButton=e.target.closest("[data-delete-slip]");
+  if(deleteSlipButton){
+    const slipId=(deleteSlipButton.dataset.deleteSlip||"").trim();
+    if(!getOwnerKey()){toast("Enter your owner key once in the top-right field first.");$("globalOwnerKey").focus();return}
+    if(!confirm(`Permanently delete payment slip ${slipId}?`))return;
+    deleteSlipButton.disabled=true;
+    try{
+      const d=await api(`/slips/${encodeURIComponent(slipId)}`,{method:"DELETE",headers:{"X-Owner-Key":getOwnerKey()}});
+      toast(d.message||"Payment slip deleted.");
+      await Promise.all([loadSlips(),loadStats(),loadAudit()]);
+    }catch(err){
+      toast("Delete slip failed: "+err.message);
+      deleteSlipButton.disabled=false;
+    }
+    return;
+  }
+  const deleteOrderButton=e.target.closest("[data-delete-order]");if(deleteOrderButton){const orderId=deleteOrderButton.dataset.deleteOrder;if(!getOwnerKey()){toast("Enter your owner key once in the top-right field first.");$("globalOwnerKey").focus();return}if(!confirm(`Permanently delete order ${orderId}?`))return;deleteOrderButton.disabled=true;try{const d=await api(`/orders/${encodeURIComponent(orderId)}`,{method:"DELETE",headers:{"X-Owner-Key":getOwnerKey()}});toast(d.message||"Order deleted.");await Promise.all([loadOrders(),loadStats(),loadAudit()])}catch(err){toast("Delete failed: "+err.message);deleteOrderButton.disabled=false}return}const decision=e.target.closest("[data-decision]");if(decision){const slipId=(decision.dataset.slip||"").trim();if(!slipId){toast("This slip has no ID. Refresh the queue and check the backend /slips response.");console.error("Blocked decision request: missing slip ID", decision);return}if(!getOwnerKey()){toast("Enter your owner key once in the top-right field, then retry.");$("globalOwnerKey").focus();return}const note=prompt("Add a review note (minimum 3 characters):","Checked bank account manually.");if(note===null)return;try{const d=await api(`/slips/${encodeURIComponent(slipId)}/decision`,{method:"POST",headers:ownerHeaders(),body:JSON.stringify({decision:decision.dataset.decision,note})});toast(d.message||"Decision saved.");await Promise.all([loadSlips(),loadStats(),loadOrders(),loadAudit()])}catch(err){toast("Decision failed: "+err.message)}}
+const copy=e.target.closest("[data-copy]");if(copy){try{await navigator.clipboard.writeText(copy.dataset.copy);toast("Reminder copied.")}catch(err){prompt("Copy this customer reminder:",copy.dataset.copy)}}
+const del=e.target.closest("[data-delete-product]");if(del){if(!confirm("Delete product "+del.dataset.deleteProduct+"?"))return;try{await api("/products/"+encodeURIComponent(del.dataset.deleteProduct),{method:"DELETE"});toast("Product deleted.");await loadProducts()}catch(err){toast("Delete failed: "+err.message)}}
+const edit=e.target.closest("[data-edit-product]");if(edit){const name=prompt("Product name:",edit.dataset.name);if(name===null)return;const unit=prompt("Size / unit:",edit.dataset.unit);if(unit===null)return;const price=prompt("Price in RM:",edit.dataset.price);if(price===null)return;const available=confirm("Is this product available? Click Cancel for unavailable.");try{await api("/products/"+encodeURIComponent(edit.dataset.editProduct),{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({product_name:name,size_or_unit:unit,price_rm:Number(price),is_available:available?1:0})});toast("Product updated.");await loadProducts()}catch(err){toast("Update failed: "+err.message)}}});
+$("addProduct").onclick = async () => {
+    const button = $("addProduct");
+    const result = $("productResult");
+    const name = $("newProductName").value.trim();
+    const unit = $("newProductUnit").value.trim();
+    const price = Number($("newProductPrice").value);
+
+    if (!name) { showResult("productResult", "Please enter a product name."); return; }
+    if (!unit) { showResult("productResult", "Please enter a size or unit."); return; }
+    if (!Number.isFinite(price) || price <= 0) {
+        showResult("productResult", "Please enter a valid price greater than 0.");
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Adding...";
+    try {
+        const response = await api("/products/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ product_name: name, size_or_unit: unit, price_rm: price })
+        });
+        showResult("productResult", "Product added successfully: " + (response.product_name || name) + ".");
+        toast("Product added successfully.");
+        $("newProductName").value = "";
+        $("newProductPrice").value = "";
+        try {
+            await loadProducts();
+        } catch (refreshError) {
+            result.textContent += "\n\nProduct was saved, but the list could not refresh. " + refreshError.message;
+        }
+    } catch (error) {
+        showResult("productResult", "Could not add product: " + error.message);
+    } finally {
+        button.disabled = false;
+        button.textContent = "Add product";
+    }
+};
+$("exportCsv").onclick=()=>{window.location.href=API+"/dashboard/export-csv"};
+$("deleteOrderHistory").onclick=async()=>{if(!getOwnerKey()){toast("Enter your owner key once in the top-right field first.");$("globalOwnerKey").focus();return}if(!confirm("Permanently delete ALL order history? Payment slips and products will be kept."))return;const b=$("deleteOrderHistory");b.disabled=true;try{const d=await api("/orders",{method:"DELETE",headers:{"X-Owner-Key":getOwnerKey()}});showResult("orderHistoryResult",d);await Promise.all([loadOrders(),loadStats(),loadAudit()]);toast(d.message||"Order history deleted.")}catch(e){showResult("orderHistoryResult","Delete failed: "+e.message)}finally{b.disabled=false}};
+$("resetHistory").onclick=async()=>{if(!getOwnerKey()){toast("Enter your owner key once in the top-right field first.");$("globalOwnerKey").focus();return}if(!confirm("Clear all Orders, Payment Review, Bank Statement transactions, and Audit Logs? Product Catalogue will be kept. This cannot be undone."))return;try{const d=await api("/dashboard/reset-history",{method:"DELETE",headers:{"X-Owner-Key":getOwnerKey()}});showResult("resetResult",d);await refreshAll()}catch(e){showResult("resetResult","Reset failed: "+e.message)}};
+refreshAll();
+</script></body></html>
