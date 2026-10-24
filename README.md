@@ -50,26 +50,27 @@ Orbyte SlipMatch applies AI strictly where it adds value: GenAI text parsing to 
 
 ## Project Structure
 
-    .
-    ├── docs/                                     # Screenshots, diagrams
-    ├── runpod/
-    │   └── handler.py                            # RunPod serverless handler (GPU workload)
-    ├── src/
-    │   ├── main.py                               # Application entry point
-    │   └── utils.py                              # Helper functions
-    ├── submission/                               # Required submission documents
-    │   ├── SDC2026_Catalyst_Preliminary.pdf      # Preliminary submission
-    │   ├── SDC2026_Catalyst_TechDeclaration.pdf  # Technology declaration
-    │   ├── SDC2026_Catalyst_Replit_POU.pdf       # Replit proof of use
-    │   └── SDC2026_Catalyst_Runpod_POU.pdf       # RunPod proof of use
-    ├── tests/
-    │   └── test_utils.py                         # Unit tests
-    ├── .env.example                              # Example environment variables
-    ├── .gitignore
-    ├── .replit                                   # Replit run configuration
-    ├── LICENSE
-    ├── requirements.txt                          # Python dependencies
-    └── README.md
+```text
+.
+├── docs/                                   # Screenshots, diagrams & assets
+├── runpod/
+│   └── handler.py                          # RunPod serverless handler (GPU OCR workload)
+├── src/
+│   ├── main.py                             # Master FastAPI server & routing
+│   └── ocr.py                              # OCR extraction helper module
+├── submission/                             # Required hackathon submission documents
+│   ├── SDC2026_Catalyst_Preliminary.pdf      # Preliminary proposal
+│   ├── SDC2026_Catalyst_TechDeclaration.pdf  # Technical & tools declaration
+│   ├── SDC2026_Catalyst_Replit_POU.pdf       # Replit proof of use
+│   └── SDC2026_Catalyst_Runpod_POU.pdf       # RunPod proof of use
+├── tests/
+│   └── test_utils.py                       # Unit tests
+├── .env.example                            # Example environment variables template
+├── .gitignore
+├── .replit                                 # Replit run configuration
+├── LICENSE                                 # Apache License 2.0
+├── requirements.txt                        # Python dependencies
+└── README.md
 
 
 ## Architecture
@@ -83,34 +84,40 @@ Orbyte SlipMatch applies AI strictly where it adds value: GenAI text parsing to 
 
 ### Option 1 — Run on Replit (Recommended)
 
-1. Open the Replit Project, or import this repository via **Create Repl → Import from GitHub**.
-2. Open the **Secrets** tab and add the variables listed in `.env.example`:
+1. Open the Live Replit Deployment.
+2. Alternatively, import this repository into Replit via Create Repl → Import from GitHub.
+3. In your Replit Secrets tab, verify the environment variables are configured:
    * `RUNPOD_API_KEY: rpa_6I5A57O3NDLIRATSD9E66PBNDHZ3N8BK8TAGP1OB1pxhdg`
    * `RUNPOD_ENDPOINT_ID: 6tzygt6b8mtjgt`
-3. Click **Run**. Replit uses the `.replit` file to start `python src/main.py`.
+   * `SLIPMATCH_OWNER_KEY: demo-owner-123`
+   * `OCR_PROVIDER: runpod`
+4. Click Run to boot up the FastAPI server via .replit.
+
 
 ### Option 2 — Run Locally
+# 1. Clone the repository
+git clone [https://github.com/xian3512/SDC2026---Catalyst.git](https://github.com/xian3512/SDC2026---Catalyst.git)
+cd SDC2026---Catalyst
 
-    # 1. Clone the repository
-    git clone https://github.com/xian3512/SDC2026---Catalyst.git
-    cd SDC2026---Catalyst
+# 2. Create and activate a virtual environment
+python -m venv .venv
+# On Windows PowerShell:
+.\.venv\Scripts\Activate
+# On macOS/Linux:
+source .venv/bin/activate
 
-    # 2. Create and activate a virtual environment
-    python -m uvicorn main:app --reload --port 8000
+# 3. Install dependencies
+pip install -r requirements.txt
 
-    # 3. Install dependencies
-    pip install -r requirements.txt
+# 4. Configure environment variables
+cp .env.example .env        # Open .env and configure your keys
 
-    # 4. Configure environment variables
-    cp .env.example .env           # then fill in your values
-
-    # 5. Run the app
-    python src/main.py
-
+# 5. Run the application
+python src/main.py
 
 ## Run Tests
 
-    python -m unittest discover tests
+    python -m uvicorn main:app --reload --port 8000
 
 
 ## How We Use Replit *(Required)*
@@ -124,15 +131,8 @@ Proof of use: `submission/SDC2026_Catalyst_Replit_POU.pdf`
 ## How We Use RunPod *(Required)*
 
 - **Workload:** High-accuracy OCR neural model inference for processing payment slip images, extracting transfer metadata, and performing tamper detection.
-- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**.
+- **Setup:** `runpod/handler.py` is deployed as a **RunPod Serverless Endpoint**(6tzygt6b8mtjgt).
 - **Integration:** The FastAPI application dispatches image processing requests to the endpoint using `RUNPOD_API_KEY` and `RUNPOD_ENDPOINT_ID`.
-
-Example request:
-
-    curl -X POST https://api.runpod.ai/v2/$RUNPOD_ENDPOINT_ID/runsync \
-      -H "Authorization: Bearer $RUNPOD_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{"input": {"prompt": "Hello"}}'
 
 Proof of use: `submission/SDC2026_Catalyst_Runpod_POU.pdf`
 
@@ -148,11 +148,11 @@ Proof of use: `submission/SDC2026_Catalyst_Runpod_POU.pdf`
 
 | Name | Role | GitHub |
 | --- | --- | --- |
-| Ang Yi Xian | Team Lead / Backend | @michaelzhngg |
-| Evelyn Leong Yee Ying | Frontend | @username |
-| Goh Zi Wei | AI / RunPod | @username |
-| Loo Zi Yan | AI / RunPod | @username |
-| Wong Kai Yek | AI / RunPod | @username |
+| Ang Yi Xian | Team Lead / Backend / AI | @xian3512 |
+| Evelyn Leong Yee Ying | Database / Integration | @username |
+| Goh Zi Wei | Backend | @username |
+| Loo Zi Yan | Frontend | @username |
+| Wong Kai Yek | Demo / Database | @username |
 
 ## Submission Checklist
 - [x] Team name, domain (Domain 2) and SDG track filled in
